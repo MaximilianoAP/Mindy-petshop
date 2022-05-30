@@ -1,38 +1,21 @@
-/* 
-CSS rules font-family:
-font-family: 'M PLUS Rounded 1c', sans-serif;
-font-family: 'Oswald', sans-serif;
-*/
-
 * {
-  padding: 0;
-  margin: 0;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
 }
 
-/*------------------INDEX-------------------*/
-/*HEADER*/
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: #6c5c4d;
-}
-h1 {
-  font-size: 4rem;
-  font-weight: bolder;
-  color: #ffff;
+
+/*///////////////////// FOOTER TOP//////////////// */
+.img_footer {
+    height: 2rem;
 }
 
-/*nav*/
-.nav-color {
-  background-color: #B09E99;
+#footerTop {
+    background-color: #64B6AC;
 }
-/*nav*/
-/*HEADER*/
 
-/*BODY*/
-/*BODY*/
+/*///////////////////// FOOTER BOT//////////////// */
 
-/*FOOTER*/
-/*FOOTER*/
+#mercado-pago-icon {
+    height: 1.5rem;
+}
