@@ -5,23 +5,40 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Oswald&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
   <title>Mindy</title>
 </head>
 <body>
   <header>
-    <h1>¡Bienvenidos a Petshop Mindy!</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="farmacia.html">Farmacia</a></li>
-        <li><a href="jugeteria.html">Jugeteria</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
+    <nav class="nav-color w-100 d-flex flex-column navbar navbar-expand-lg ">
+      <div class="d-flex justify-content-center w-100">
+        <div class="d-flex p-2"></div>
+          <h1><a class="navbar-brand" href="index.html">Mindy!</a></h1>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        
+        <div class="d-flex collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav d-flex justify-content-evenly text-white">
+            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+            <a class="nav-link" href="jugeteria.html">Jugeteria</a>
+            <a class="nav-link" href="farmacia.html">Farmacia</a>
+            <a class="nav-link" href="contacto.html">Contacto</a>
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
   <main>
 
   </main>
-  <footer></footer>
+  <footer>
+
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

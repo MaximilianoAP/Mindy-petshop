@@ -1,0 +1,38 @@
+/* 
+CSS rules font-family:
+font-family: 'M PLUS Rounded 1c', sans-serif;
+font-family: 'Oswald', sans-serif;
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+/*------------------INDEX-------------------*/
+/*HEADER*/
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #6c5c4d;
+}
+h1 {
+  font-size: 4rem;
+  font-weight: bolder;
+  color: #ffff;
+}
+
+/*nav*/
+.nav-color {
+  background-color: #B09E99;
+}
+/*nav*/
+/*HEADER*/
+
+/*BODY*/
+/*BODY*/
+
+/*FOOTER*/
+/*FOOTER*/
