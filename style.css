@@ -13,20 +13,50 @@ font-family: 'Oswald', sans-serif;
 /*------------------INDEX-------------------*/
 /*HEADER*/
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: #6c5c4d;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
-h1 {
-  font-size: 4rem;
-  font-weight: bolder;
-  color: #ffff;
+.logo-doggo {
+  width: 40%;
 }
 
+@media(max-width:576px){
+  header {
+    height: fit-content;
+  }
+  img {
+    width: 200px;
+  }
+}
+.top-header {
+  background-color: #fad4c0;
+}
 /*nav*/
 .nav-color {
-  background-color: #B09E99;
+  background-color: #fad4c0;
+}
+
+.nav-ul {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: large;
+  font-weight: bolder;
+  color: #000;
+  background-color: #fad4c0;
+  border-bottom: 1px solid #000;
+}
+.nav-ul a {
+  color: #000;
+}
+
+.navbar-nav {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+.navbar-nav a:hover {
+  border-bottom: 5px solid #000;
+  padding-bottom: 3px
 }
 /*nav*/
 /*HEADER*/
