@@ -31,47 +31,95 @@ async function getData() {
     }))
 
     //combinar checkbox y searchInput
+    
+    //combinar checkbox y searchInput
     function arrayaImprimir() {
         let array = [];
         if (checkSeleccionado.length > 0) {
-            checkSeleccionado.forEach(e => {
-                if (e.includes("menos500")) {
-                    array.push(...arrayMedicamento.filter(medicamento => medicamento.precio <= 500))
-                } else if (e.includes("mas500")) {
-                    array.push(...arrayMedicamento.filter(medicamento => medicamento.precio > 500))
-                } else {
+                let aux = []
+                if (checkSeleccionado.includes("menos500") && checkSeleccionado.includes("mas500") && checkSeleccionado.includes("bajoStock")){
+                array.push(...arrayMedicamento.filter(medicamento => medicamento.stock <=5))
+                }
+                if (checkSeleccionado.includes("menos500")){
+                    if (checkSeleccionado.includes("menos500") && checkSeleccionado.includes("bajoStock")) {
+                        aux.push(...arrayMedicamento.filter(medicamento => medicamento.precio <= 500))
+                        array.push(...aux.filter(medicamento => medicamento.stock <= 5))
+                        console.log(aux)
+                        console.log(array)
+                    }else{
+                        if (checkSeleccionado.includes("menos500") && checkSeleccionado.includes("mas500")){
+                            array.push(...arrayMedicamento)
+                        }else {
+                            array.push(...arrayMedicamento.filter(medicamento => medicamento.precio <= 500))
+                            }
+                }
+                }
+                else if (checkSeleccionado.includes("mas500")) {
+                    if (checkSeleccionado.includes("mas500") && checkSeleccionado.includes("bajoStock")) {
+                        aux.push(...arrayMedicamento.filter(medicamento => medicamento.precio > 500))
+                        array.push(...aux.filter(medicamento => medicamento.stock <= 5))
+                        console.log(aux)
+                        console.log(array)
+                    }else{
+                        if (checkSeleccionado.includes("menos500") && checkSeleccionado.includes("mas500")){
+                            array.push(...arrayMedicamento)
+                        }else {
+                            array.push(...arrayMedicamento.filter(medicamento => medicamento.precio <= 500))
+                            }
+                }} 
+                else {
                     array.push(...arrayMedicamento.filter(medicamento => medicamento.stock <= 5))
                 }
-            })
-        } else {
+            }
+        else {
             array.push(...arrayMedicamento)
         }
-        console.log(array)
-        displayCards(array)
+        // console.log(array)
+        let arraysinrepetidos = [...new Set(array)]
+        displayCards(arraysinrepetidos)
     }
 
-    //capturar datos search
 
-    let search = document.getElementById("search")
-    search.addEventListener('keyup', (evento) => {
-        textSearch = evento.target.value
-        filtrarBuscador()
+
+    // function arrayaImprimir() {
+    //     let array = [];
+    //     if (checkSeleccionado.length > 0) {
+    //         checkSeleccionado.forEach(e => {
+    //             if (e.includes("menos500")) {
+    //                 array.push(...arrayMedicamento.filter(medicamento => medicamento.precio <= 500))
+    //             } else if (e.includes("mas500")) {
+    //                 array.push(...arrayMedicamento.filter(medicamento => medicamento.precio > 500))
+    //             } else {
+    //                 array.push(...arrayMedicamento.filter(medicamento => medicamento.stock <= 5))
+    //             }
+    //         })
+    //     } else {
+    //         array.push(...arrayMedicamento)
+    //     }
+    //     console.log(array)
+    //     displayCards(array)
+    // }
+
+
+    
+//capturar datos search
+let search = document.getElementById("search")
+search.addEventListener('keyup', (evento) => {
+    textSearch = evento.target.value
+    filtrarBuscador()
+    console.log(textSearch)
+})
+
+function filtrarBuscador() {
+    let arrayBusqueda = []
+    if (textSearch !== "") {
+        arrayBusqueda.push(...arrayMedicamento.filter(elemento => elemento.nombre.toLowerCase().includes(textSearch.trim().toLowerCase())))
+        console.log(arrayBusqueda)
+    } else {arrayBusqueda = arrayMedicamento
         console.log(textSearch)
-    })
-
-    function filtrarBuscador() {
-        if (textSearch !== "") {
-            let arrayBusqueda = []
-            console.log(textSearch)
-            arrayBusqueda.push(...arrayMedicamento.filter(elemento => elemento.nombre.toLowerCase().includes(textSearch.trim().toLowerCase())))
-            console.log(arrayBusqueda)
-        }
-        displayCards(arrayBusqueda)
     }
-
-
-
-
+    displayCards(arrayBusqueda)
+}
     function displayCards(arrayFarmacia) {
 
         let contMedicine = document.getElementById('contMedicine')
@@ -90,7 +138,7 @@ async function getData() {
                     <div class="d-flex flex-column h-100 justify-content-between">
                         <p>Descripcion: ${element.descripcion}</p>
                         <div class="d-flex justify-content-center">
-                            <a href="#" class="btn carritoAgregar carritoEliminar" onclick="fnCarrito(${element.id})" id="btn-cards">Agregar al carrito</a>
+                            <a  class="btn carritoAgregar carritoEliminar" onclick="fnCarrito(${element.id})" id="btn-cards">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -109,7 +157,7 @@ async function getData() {
                     <div class="d-flex flex-column h-100 justify-content-between">
                         <p>Descripcion: ${element.descripcion}</p>
                         <div class="d-flex justify-content-center">
-                            <a href="#" class="btn carritoAgregar carritoEliminar" onclick="fnCarrito(${element.id})" id="btn-cards">Agregar al carrito</a>
+                            <a class="btn carritoAgregar carritoEliminar" onclick="fnCarrito(${element.id})" id="btn-cards">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -120,18 +168,16 @@ async function getData() {
                 }
             })
         } else {
-            templateCard =`
-            <div>      
+            templateCard =
+                `<div id="advertencia">
                 <div>
-                    <img src="../assets/alerta.png" alt="mindy_toma_cafe">
+                <img src="../assets/alerta.png" alt="alerta" id="perro_advertencia">
                 </div>
                 <div>
-                    <h5>ADVERTENCIA</h5>
-                    <p>Búsqueda no encontrada</p>
+                <h5 class="advertencia_titulo">ADVERTENCIA</h5>
+                <p>Búsqueda no entontrada</p>
                 </div>
-            </div>
-            `
-            
+            </div>`
         }
         contMedicine.innerHTML = templateCard
     }
@@ -145,3 +191,9 @@ async function getData() {
 getData()
 
 
+// let showNav = document.querySelector(".showNav")
+// let ulNav = document.querySelector("#ulNav")
+
+// showNav.addEventListener("click", () => {
+//     ulNav.classList.toggle("visually-hidden")
+// })
